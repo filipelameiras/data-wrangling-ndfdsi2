@@ -1,5 +1,6 @@
 import tweepy
 import json
+import requests
 
 def save_tweets_json_in_file(ids_tweets, consumer_key, consumer_secret, access_token, access_token_secret):
 
@@ -28,6 +29,12 @@ def save_tweets_json_in_file(ids_tweets, consumer_key, consumer_secret, access_t
 		json.dump(status_json, outfile)
     
 	print('Arquivo salvo com sucesso!')
+
+
+def download_file(url,filename):
+	r = requests.get(url, allow_redirects=True)
+	open(filename, 'w').write(r.text)
+	print('Download file complete')
 
 #test
 #save_tweets_json_in_file(['892420643555336193','892177421306343426','891815181378084864','891087950875897856'], 'fJmmapkD8vwb2Z7xeo1p3IEum', 'ci0SlDlQzh5ch5jybWuOCxRaa2zdR0TNNKkDz11Xfux2rImpBp', '930905256405426177-We3KEnLpg9dzHr1iy1awQ3vyriX2aly', 'tXCGULXPUon56C7Cei2lEyQs8f7OIduGTLf3Os34GQ7WB')
